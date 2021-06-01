@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html lang="en" xmnls="http://wwww.w3.org/1000/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header" />
+
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container ">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xl-8">
+				<h2 class="section-headline">
+					<span>Choose the item you want !!!</span>
+				</h2>
+			</div>
+			<div class="col-xl-4">
+				<img
+					src="https://s3.amazonaws.com/thumbnails.venngage.com/template/a3a62175-0e0c-4092-925c-ee74674f7159.png"
+					class="img-responsive" />
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;">
+
+		<div class="row" style="margin-top: 60px;">
+			<div class="col-xl-3 " >
+			<h3><label for="category">Category</label></h3>
+			<div class="list-group" id="category">
+				<a th:href="@{/shoeshelf(category='all')}" th:classappend="${activeAll}? 'active'" class="list-group-item">All</a>
+				<a th:href="@{/searchByCategory(category='Sneaker')}" th:classappend="${activeSneaker}? 'active'" class="list-group-item">Sneakers</a>
+				<a th:href="@{/searchByCategory(category='Heels')}" th:classappend="${activeHeels}? 'active'" class="list-group-item">Heels</a>
+				<a th:href="@{/searchByCategory(category='Flipflop')}" th:classappend="${activeFlipflop}? 'active'" class="list-group-item">Flipflop</a>
+				<a th:href="@{/searchByCategory(category='Sandal')}" th:classappend="${activeSandal}? 'active'" class="list-group-item">Sandal</a>
+				<a th:href="@{/searchByCategory(category='Ballerinas')}" th:classappend="${activeBallerinas}? 'active'" class="list-group-item">Ballerinas</a>
+				<a th:href="@{/searchByCategory(category='Wedges')}" th:classappend="${activeWedges}? 'active'" class="list-group-item">Wedges</a>
+				<a th:href="@{/searchByCategory(category='Sport')}" th:classappend="${activeSport}? 'active'" class="list-group-item">Sport</a>
+			</div>
+			</div>
+		
+		
+			<div class="col-xl-9 ">
+				<div th:if="${emptyList}">
+					<h5 style="font-style: italic;">Oops, no result is found. Try
+						something else or try again later.</h5>
+				</div>
+				<table border="0" id="shoeList">
+					<thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="shoe-item" data-th-each="shoe : ${shoeList}">
+							<td>
+								<div th:if="${shoe != null}">
+									<div class="row">
+										<div class="col-xl-4">
+											<a th:href="@{/shoeDetail?id=}+${shoe.id}"><img
+												class="img-responsive shelf-shoe"
+												th:src=" 'http://localhost:8081/adminportal' +@{/images/shoe/}+${shoe.id}+'.png'" /></a>
+											
+										</div>
+										<div class="col-xl-2">
+										
+										</div>
+										
+										<div class="col-xl-4">
+											<a th:href="@{/shoeDetail?id=}+${shoe.id}"><h4
+													th:text="${shoe.title}"></h4></a> <span th:text="${shoe.brand}"></span>
+											<p th:text="${shoe.gtype}"></p>
+											<a th:href="@{/shoeDetail?id=}+${shoe.id}"></a> <span
+												th:text="${shoe.availablesize}"><span> sizes</span></span><br />
+
+											<a th:href="@{/shoeDetail?id=}+${shoe.id}"><span
+												style="font-size: x-large; color: #db3208;">&#8377;<span
+													th:text="${#numbers.formatDecimal(shoe.ourPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span></a>
+
+											<span style="text-decoration: line-through;">&#8377;<span
+												th:text="${#numbers.formatDecimal(shoe.listPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span>
+
+											<p th:utext="${#strings.abbreviate(shoe.description, 1000)}"></p>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+	<!-- End of container -->
+
+
+	<div th.replace-"common/header :: body-bottom-scripts" />
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="">
+<meta name="author" content="" />
+
+
+<title>Metro shoe store</title>
+
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/4.0/examples/navbars/">
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<style>
+body, html {
+	height: 100%;
+	color: #777;
+	line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+	background-image: url('/w3images/parallax1.jpg');
+	min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+	background-image:
+		url("https://thumbs.dreamstime.com/z/shoe-store-milan-23489263.jpg");
+	min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+	background-image:
+		url("https://www.forummalls.in/wp-content/uploads/malls/shantiniketan/shop_front/metro/fsn_metro_f.jpg");
+	min-height: 400px;
+}
+
+.w3-wide {
+	letter-spacing: 10px;
+}
+
+.w3-hover-opacity {
+	cursor: pointer;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+	.bgimg-1, .bgimg-2, .bgimg-3 {
+		background-attachment: scroll;
+		min-height: 400px;
+	}
+}
+</style>
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<nav
+			class="navbar navbar-expand-lg navbar-inverse bg-light rounded navbar-inverse">
+			<a class="navbar-brand" th:href="@{/}">Metro Shoe Store</a>
+
+
+			<div class="collapse navbar-collapse" id="navbarsExample09">
+				<ul class="nav navbar-nav navbar-left">
+					<li>
+					<div class="dropdown">
+						<a class="btn  ">Shoes</a>
+						<div class="dropdown-content">
+							<a th:href="@{/shoeshelf}" >Shoes</a> 
+							<a href="https://www.google.com/maps/place/Metro+Shoes/@19.1755818,77.3031293,17z/data=!3m1!4b1!4m5!3m4!1s0x3bd1d68bba5cc2c7:0xba1c3ecc726f92d5!8m2!3d19.1755818!4d77.305318">Map</a> 
+							<a href="https://static3.depositphotos.com/1007499/231/i/950/depositphotos_2319035-stock-photo-faq.jpg">Faq </a>
+								
+						</div>
+					</div></li>
+
+					<form class="form-inline my-2 my-md-0" th:action="@{/searchShoe}"
+						method="post">
+						<input class="form-control" type="text" name="keyword"
+							placeholder="Search" />
+
+						<button type="submit" class="btn btn-info">
+							<span class="glyphicon glyphicon-search"></span>GO
+						</button>
+					</form>
+				</ul>
+			</div>
+
+			<div class="navbar-form navbar-right">
+				<ul class="list-inline">
+
+					<li><a class="btn  " th:href='@{/shoppingCart/cart}'>SHOOPING CART</a> <a
+						sec:authorize="isAnonymous()" class="btn btn-primary pull-right"
+						th:href="@{/login}">My Account</a> <a
+						sec:authorize="isAuthenticated()" class="btn  pull-right"
+						th:href="@{/myProfile}">My Account</a> <a
+						sec:authorize="isAuthenticated()" class="btn  pull-right"
+						th:href="@{/logout}">Logout</a></li>
+
+				</ul>
+			</div>
+		</nav>
+		
+		<div th:fragment="body-bottom-scripts">
+			
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+			<script th:src="@{/js/bootstrap.min.js}"></script>
+			<script th:src="@{/js/script.js}"></script>
+			<script>
+				// Modal Image Gallery
+				function onClick(element) {
+					document.getElementById("img01").src = element.src;
+					document.getElementById("modal01").style.display = "block";
+					var captionText = document.getElementById("caption");
+					captionText.innerHTML = element.alt;
+				}
+
+				// Change style of navbar on scroll
+				window.onscroll = function() {
+					myFunction()
+				};
+				function myFunction() {
+					var navbar = document.getElementById("myNavbar");
+					if (document.body.scrollTop > 100
+							|| document.documentElement.scrollTop > 100) {
+						navbar.className = "w3-bar" + " w3-card"
+								+ " w3-animate-top" + " w3-white";
+					} else {
+						navbar.className = navbar.className.replace(
+								" w3-card w3-animate-top w3-white", "");
+					}
+				}
+
+				// Used to toggle the menu on small screens when clicking on the menu button
+				function toggleFunction() {
+					var x = document.getElementById("navDemo");
+					if (x.className.indexOf("w3-show") == -1) {
+						x.className += " w3-show";
+					} else {
+						x.className = x.className.replace(" w3-show", "");
+					}
+				}
+			</script>
+		</div>
+	</div>
+	<div th:fragment="footer">
+			<!-- Footer -->
+			<footer
+				class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+				<a th:href="@{/}" class="w3-button w3-light-grey"><i
+					class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+				<div class="w3-xlarge w3-section">
+					<i> <a href="https://www.facebook.com/Metroshoes/" class="fa fa-facebook-official w3-hover-opacity" ></a></i> 
+					<i	class="fa fa-instagram w3-hover-opacity"></i> 
+					<i	class="fa fa-snapchat w3-hover-opacity"></i> 
+					<i	class="fa fa-pinterest-p w3-hover-opacity"></i> 
+					<i	class="fa fa-twitter w3-hover-opacity"></i> 
+					<i	class="fa fa-linkedin w3-hover-opacity"></i>
+				</div>
+				<p>
+					DBMS <a 
+						title="W3.CSS" target="_blank" class="w3-hover-text-green">project</a>
+				</p>
+			</footer>
+		
+	</div>
+</body>
+</html>

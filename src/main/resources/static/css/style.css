@@ -1,0 +1,117 @@
+body {
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+hr{
+	border: none;
+	height: 1px;
+	color: #333;
+	background-color: #333;
+}
+.box{
+	border: 2px solid red;
+}
+img {
+ width: 100%;
+ height: auto;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.home-headline{
+	font-family: 'Times new Roman', Times,serif;
+	font-size:28px;
+	color: #fff;
+	max-width: 200px;
+	margin: auto;
+	align-content: center;
+	margin-top: -13px
+}
+
+
+.home-headline span{
+	background-color: #231F20;
+	padding : 5px 22 px;
+}
+.btn{
+    margin-left:10px;
+}
+
+.section-hedline{
+	
+	font-family: 'Times new Roman', Times,serif;
+	font-size:28px;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-top: 90px
+}
+.section-hedline span{
+	background-color: #231F20;
+	padding : 5px 22 px;
+}
+.transbox {
+  margin: auto;
+  background-color: #ffffff;
+  opacity: 0.9;
+}
+.nav-pills li {
+    margin-left: 5px; 
+} 
+/* Dropdown Button */
+.dropbtn {
+  background-color:none;
+  color: white;
+  padding: 10px;
+  font-size: 10px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #fcfff5;}
